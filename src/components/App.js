@@ -19,12 +19,12 @@ const App = () => {
       <ul>
         <li><Link to="/Home">PlayGround</Link></li>
         
-        <li><Link to="/Login">{isAuth ? "Login" : "Login"}</Link></li>
+        <li><Link to="/login">{isAuth ? "Login" : "Login"}</Link></li>
       </ul>
 
       <Routes>
-        {/* ✅ Pass both isAuth & setIsAuth */}
-        <Route path="/Login" element={<Login setIsAuth={setIsAuth} isAuth={isAuth} />} />
+        
+        <Route path="/login" element={<Login setIsAuth={setIsAuth} isAuth={isAuth} />} />
 
         <Route
           path="/Home"
