@@ -1,13 +1,44 @@
-
-import React from "react";
-import './../styles/App.css';
+import React, { useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Login from "./Login";
+import Home from "./Home";
+import PrivateRoute from "./PrivateRoute";
+import Error from "./Error";
 
 const App = () => {
-  return (
-    <div>
-        {/* Do not remove the main div */}
-    </div>
-  )
-}
+  const [isAuth, setIsAuth] = useState(false);
 
-export default App
+  return (
+    <div className="main-container">
+      {!isAuth ? (
+        <p>You are not authenticated, Please Login First</p>
+      ) : (
+        <p>Logged in, Now you can enter Playground</p>
+      )}
+
+      <ul>
+        <li><Link to="/Home">PlayGround</Link></li>
+        
+        <li><Link to="/Login">{isAuth ? "Login" : "Login"}</Link></li>
+      </ul>
+
+      <Routes>
+        {/* ✅ Pass both isAuth & setIsAuth */}
+        <Route path="/Login" element={<Login setIsAuth={setIsAuth} isAuth={isAuth} />} />
+
+        <Route
+          path="/Home"
+          element={
+            <PrivateRoute isAuth={isAuth}>
+              <Home />
+            </PrivateRoute>
+          }
+        />
+
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </div>
+  );
+};
+
+export default App;
