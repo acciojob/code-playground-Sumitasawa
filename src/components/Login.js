@@ -6,13 +6,14 @@ const Login = ({ setIsAuth, isAuth }) => {
 
   return (
     <div>
-      <p>Login Page</p>
-
+      
       {!isAuth ? (
-        <button onClick={handleLogin}>Login</button>
+        <button onClick={handleLogin}>Log In</button>
       ) : (
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={handleLogout}>Log Out</button>
       )}
+
+      <p>Login</p>
     </div>
   );
 };

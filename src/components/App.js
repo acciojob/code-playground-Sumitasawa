@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div className="main-container">
       {!isAuth ? (
-        <p>You are not authenticated, Please Login First</p>
+        <p>You are not authenticated, Please login first</p>
       ) : (
         <p>Logged in, Now you can enter Playground</p>
       )}
